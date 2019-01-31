@@ -7,32 +7,35 @@ namespace Assignment_1_Calculator
 {
   class UserInput
   {
-    readonly string[] operations = { "a", "s", "m", "d", "r", "c", "e" };
+    readonly string[] operations = { "a", "s", "m", "d", "e" };
 
     /// <summary>
     /// Provide information on how the user will interact with the Program
     /// Read user input
-    /// Warnning this method will lock the user until he Write the correct operation
+    /// Warnning this method will lock the user until getting the correct operation
     /// </summary>
-    /// <returns>a valid operation</returns>
+    /// <returns>A valid operation</returns>
     public string GetOperation()
     {
       do
       {
-        Console.WriteLine("Choose your operation!");
-        Console.WriteLine("For Adding Numbers Press: a");
-        Console.WriteLine("For Substracting Numbers Press: s");
-        Console.WriteLine("For Multiplying Numbers Press: m");
-        Console.WriteLine("For Dividing Numbers Press: d");
-        //Console.WriteLine("To Reset Press: r");
-        //Console.WriteLine("To Change Operstion Press: c");
-        Console.WriteLine("To Exit Press: e");
+        ConsoleHelper.WriteToConsole("For Addition......Press: ");
+        ConsoleHelper.WriteToConsole("a", ConsoleColor.Blue, emptyLinesCout: 1);
+        ConsoleHelper.WriteToConsole("For Substracting..Press: ");
+        ConsoleHelper.WriteToConsole("s", ConsoleColor.Blue, emptyLinesCout: 1);
+        ConsoleHelper.WriteToConsole("For Multiplying...Press: ");
+        ConsoleHelper.WriteToConsole("m", ConsoleColor.Blue, emptyLinesCout: 1);
+        ConsoleHelper.WriteToConsole("For Dividing......Press: ");
+        ConsoleHelper.WriteToConsole("d", ConsoleColor.Blue, emptyLinesCout: 1);
+        ConsoleHelper.WriteToConsole("To  Exit..........Press: ", ConsoleColor.Red);
+        ConsoleHelper.WriteToConsole("e", ConsoleColor.Blue, emptyLinesCout: 1);
         string operation = Console.ReadLine();
         if (operations.Contains(operation))
         {
           return operation;
         }
-        Console.WriteLine("\nPlease Choose A Valid Operation! \n");
+        Console.Clear();
+        ConsoleHelper.WriteToConsole("Please Choose A Valid Operation!", ConsoleColor.DarkYellow, 1);
       } while (true);
     }
 
@@ -51,7 +54,7 @@ namespace Assignment_1_Calculator
           var digits = input.Trim().Split(" ").Select(Double.Parse).ToArray();
           if (digits.Length < 2)
           {
-            Console.WriteLine("Please Enter At Least Two Digits! \n");
+            ConsoleHelper.WriteToConsole("Please Enter At Least Two Digits!", ConsoleColor.DarkYellow, 1);
           }
           else
           {
@@ -60,7 +63,7 @@ namespace Assignment_1_Calculator
         }
         catch
         {
-          Console.WriteLine("Please Enter A Valid Input! \n");
+          ConsoleHelper.WriteToConsole("Please Enter A Valid Input!", ConsoleColor.DarkYellow, 1);
         }
       }
     }

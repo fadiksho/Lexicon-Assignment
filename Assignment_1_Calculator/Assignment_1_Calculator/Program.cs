@@ -1,31 +1,32 @@
 ﻿using System;
+using System.Linq;
 
 namespace Assignment_1_Calculator
 {
   class Program
   {
-
-
     static void Main(string[] args)
     {
       string operation = "";
       double result = 0.0;
       bool displayResult = true;
-      Console.WriteLine("Welcome To Lexicon Calculator!");
-
-      MathOperation mathOperation = new MathOperation();
-      UserInput validation = new UserInput();
-
+      var mathOperation = new MathOperation();
+      var validation = new UserInput();
+      
       // Loop To Keep The Program Running!
       while (true)
       {
+        Console.BackgroundColor = ConsoleColor.DarkRed;
+        ConsoleHelper.WriteToConsole("Lexicon Calculator!", ConsoleColor.White, 2);
+
         operation = validation.GetOperation();
 
         if (operation == "e")
         {
           Environment.Exit(0);
         }
-        Console.WriteLine("Enter The Numbers ex: 4 7");
+        Console.Clear();
+        ConsoleHelper.WriteToConsole("Enter The Numbers ex: 4 7 -2 5", ConsoleColor.Green, 1);
         double[] digits = validation.GetDigits();
 
         switch (operation)
@@ -40,13 +41,15 @@ namespace Assignment_1_Calculator
             result = mathOperation.Multiply(digits);
             break;
           case "d":
-            if (digits[1] == 0)
+            var dividendNumber = digits.FirstOrDefault();
+            var divisorNumber = mathOperation.Multiply(digits.Skip(1));
+            if (divisorNumber == 0)
             {
               displayResult = false;
-              Console.WriteLine("Opps! Dividing By 0 Is Not A Valid Math Operation! \n");
+              ConsoleHelper.WriteToConsole("Opps! Dividing By 0 Is Not A Valid Math Operation!", ConsoleColor.DarkYellow, 1);
               break;
             }
-            result = mathOperation.Divide(digits[0], digits[1]);
+            result = mathOperation.Divide(dividendNumber, divisorNumber);
             break;
         }
 
@@ -54,7 +57,7 @@ namespace Assignment_1_Calculator
         // Ex: When We Divide By Zero There Is No Result
         if (displayResult)
         {
-          Console.WriteLine($"\nResult: {result} \n");
+          ConsoleHelper.WriteToConsole($"\nResult: {result}", ConsoleColor.DarkGreen, 2);
         }
 
         // Reset The Display Flag Because We Will Get New Input

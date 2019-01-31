@@ -7,17 +7,12 @@ namespace Assignment_1_Calculator
 {
   class MathOperation
   {
-    public double Add(params double[] numbers)
+    public double Add(double[] numbers)
     {
-      double result = 0;
-      foreach (var num in numbers)
-      {
-        result += num;
-      }
-      return result;
+      return numbers.Sum();
     }
 
-    public double Subtract(params double[] numbers)
+    public double Subtract(double[] numbers)
     {
       double result = numbers[0];
       for (int i = 1; i < numbers.Length; i++)
@@ -27,7 +22,7 @@ namespace Assignment_1_Calculator
       return result;
     }
 
-    public double Multiply(params double[] numbers)
+    public double Multiply(IEnumerable<double> numbers)
     {
       var result = numbers.Aggregate(1.0, (x, y) => x * y);
       return result;
