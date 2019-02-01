@@ -53,7 +53,9 @@ namespace Assignment_2_Golf
       if (this.BallLocation < this.GolLocation)
         BallLocation += value;
       else
-        BallLocation -= value;
+      {
+        BallLocation = Math.Abs(BallLocation - value);
+      }
     }
 
     /// <summary>
