@@ -11,7 +11,7 @@ namespace Assignment_2_Golf
       // Convert Angle Degree To Radians
       var angleInRadians = Math.PI / 180 * angleInDegree;
       // Calculate The Distanc Low
-      return Math.Pow(vilocity, 2) / 9.8 * Math.Sin(2 * angleInRadians);
+      return Math.Round(Math.Pow(vilocity, 2) / 9.8 * Math.Sin(2 * angleInRadians));
     }
   }
 }

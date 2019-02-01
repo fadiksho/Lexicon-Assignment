@@ -78,11 +78,12 @@ namespace Assignment_2_Golf
       }
     }
 
-    private void PrintGameStatus()
+    public void PrintGameStatus()
     {
-      Console.WriteLine($"Ball Location: {this.BallLocation}.");
-      Console.WriteLine($"Gol  Location: {this.GolLocation}.");
-      Console.WriteLine($"Available Swing: {this.SwingCount}//{this.MaxSwingCount}.");
+      Console.WriteLine($"Ball Location:   {this.BallLocation}.");
+      Console.WriteLine($"Gol  Location:   {this.GolLocation}.");
+      Console.WriteLine($"Distanc Between Ball & Gol  Location:   {this.DistancBetweenBallAndGol}.");
+      Console.WriteLine($"Available Swing: {this.MaxSwingCount - this.SwingCount}. \n");
     }
   }
 }
