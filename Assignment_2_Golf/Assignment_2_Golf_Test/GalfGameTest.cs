@@ -12,7 +12,8 @@ namespace Assignment_2_Golf_Test
       // Arange
       var golfGame = new GolfGame(1000, 3);
       // Act
-      golfGame.Swing(10, 50);
+      var swing = new Swing(10, 50);
+      golfGame.MoveBall(swing);
       // Assert
       Assert.AreEqual(golfGame.SwingCount, 1);
     }
@@ -22,9 +23,9 @@ namespace Assignment_2_Golf_Test
       // Arange
       var golfGame = new GolfGame(1000, 3);
       // Act
-      golfGame.Swing(10, 50);
-      golfGame.Swing(10, 50);
-      golfGame.Swing(10, 50);
+      golfGame.MoveBall(new Swing(10, 50));
+      golfGame.MoveBall(new Swing(10, 50));
+      golfGame.MoveBall(new Swing(10, 50));
       // Assert
       Assert.AreEqual(GameResult.failure, golfGame.GameResult);
     }
@@ -38,8 +39,11 @@ namespace Assignment_2_Golf_Test
       // The Ball Location = 0
       // The Gol Location = 640(stadSize)/2
       var golfGame = new GolfGame(stadSize: 640, maxSwingCount: 5);
+
       // Act
-      golfGame.Swing(45, 56);
+      var swing = new Swing(45, 56);
+      golfGame.MoveBall(swing);
+
       // Assert
       Assert.AreEqual(GameResult.victory, golfGame.GameResult);
     }
@@ -54,7 +58,8 @@ namespace Assignment_2_Golf_Test
       // The Gol Location = 640(stadSize)/2
       var golfGame = new GolfGame(stadSize: 640, maxSwingCount: 5);
       // Act
-      golfGame.Swing(45, 112);
+      var swing = new Swing(45, 112);
+      golfGame.MoveBall(swing);
       // Assert
       Assert.AreEqual(GameResult.failure, golfGame.GameResult);
     }
@@ -69,7 +74,8 @@ namespace Assignment_2_Golf_Test
       // The Gol Location = 320(stadSize)/2 = 160
       var golfGame = new GolfGame(stadSize: 320, maxSwingCount: 5);
       // Act
-      golfGame.Swing(45, 56);
+      var swing = new Swing(45, 56);
+      golfGame.MoveBall(swing);
       // Assert
       Assert.AreEqual(GameResult.Playing, golfGame.GameResult);
     }

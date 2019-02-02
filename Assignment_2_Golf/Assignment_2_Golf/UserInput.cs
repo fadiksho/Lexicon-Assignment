@@ -1,11 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Assignment_2_Golf
 {
   public static class UserInput
   {
+    /// <summary>
+    /// Indicate wether the givin value is range 0 < value < 90
+    /// </summary>
+    /// <param name="angleDegree">the double to test</param>
+    /// <returns>true if in valid range 0 < value < 90</returns>
     public static bool IsAngleDegreeValid(double angleDegree)
     {
       if (angleDegree > 0 && angleDegree < 90)
@@ -14,23 +17,7 @@ namespace Assignment_2_Golf
       }
       return false;
     }
-
-    public static double GetAngleFromUser()
-    {
-      bool isAngleValueValid = false;
-      double angle = 0;
-      while (isAngleValueValid)
-      {
-        isAngleValueValid = double.TryParse(Console.ReadLine(), out angle)
-          && IsAngleDegreeValid(angle);
-        if(!isAngleValueValid)
-        {
-          Console.WriteLine("Please Enter A Valid Input!");
-        }
-      }
-      return angle;
-    }
-
+    
     /// <summary>
     /// Read Input From User
     /// Warning This Method Will Lock The Program Untills Get a Valid Input

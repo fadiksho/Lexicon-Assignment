@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Assignment_2_Golf
 {
@@ -9,19 +7,19 @@ namespace Assignment_2_Golf
     public GolfGame(double stadSize, int maxSwingCount)
     {
       this.StadSize = stadSize;
-      this.GolLocation = stadSize / 2;
+      this.CupLocation = stadSize / 2;
       this.MaxSwingCount = maxSwingCount;
       this.GameResult = GameResult.Playing;
     }
 
     public double BallLocation { get; set; }
-    public double GolLocation { get; }
+    public double CupLocation { get; }
     public double StadSize { get; private set; }
-    public double DistancBetweenBallAndGol
+    public double DistancBetweenBallAndCup
     {
       get
       {
-        return Math.Abs(this.BallLocation - this.GolLocation);
+        return Math.Abs(this.BallLocation - this.CupLocation);
       }
     }
     public int SwingCount { get; set; }
@@ -30,32 +28,22 @@ namespace Assignment_2_Golf
     public string GameStatusText { get; private set; }
 
     /// <summary>
-    /// 
+    /// Move the ball towards the cup location
     /// </summary>
-    /// <param name="angleInDegree"></param>
-    /// <param name="vilocity"></param>
-    public void Swing(double angleInDegree, double vilocity)
+    /// <param name="swing">Instanc of Swing Class</param>
+    public void MoveBall(Swing swing)
     {
       this.SwingCount += 1;
-      // Calculate how far the ball should move
-      var distanceToNewLocation = PhysicMethodHelper.CalculateDistance(angleInDegree, vilocity);
-      // Set the new ball location
-      this.MoveTheBallTowardGolLocation(distanceToNewLocation);
-      // EveryTime Swing Happend Update The Game Variable
-      // GameResult:     Playing | victory | failure
-      // GameStatusText: Display User Progress Throw The Game
-      UpdateStatus();
-    }
-
-    private void MoveTheBallTowardGolLocation(double value)
-    {
       // Check to which direction the ball should go
-      if (this.BallLocation < this.GolLocation)
-        BallLocation += value;
+      if (this.BallLocation < this.CupLocation)
+        BallLocation += swing.Distance;
       else
       {
-        BallLocation = Math.Abs(BallLocation - value);
+        BallLocation = Math.Abs(BallLocation - swing.Distance);
       }
+
+      // After moving the ball we check for win or failure condition
+      UpdateStatus();
     }
 
     /// <summary>
@@ -63,29 +51,31 @@ namespace Assignment_2_Golf
     /// </summary>
     private void UpdateStatus()
     {
-      if (DistancBetweenBallAndGol == 0)
+      // Win: hit the cup
+      if (DistancBetweenBallAndCup == 0)
       {
         GameResult = GameResult.victory;
         GameStatusText = $"Congrats You Win!";
       }
+      // Failure: reached the maximus amout of swings
       else if (SwingCount >= MaxSwingCount)
       {
         GameResult = GameResult.failure;
         GameStatusText = $"Game Over You LoSe After Exceeding All Your Swings!";
       }
+      // Failure: ball exceeded the stadiom
       else if (BallLocation > StadSize)
       {
         GameResult = GameResult.failure;
         GameStatusText = $"Game Over You LoSe! The Ball Is Outside The Stadium!";
       }
     }
-
+    
     public void PrintGameStatus()
     {
-      Console.WriteLine($"Ball Location:   {this.BallLocation}.");
-      Console.WriteLine($"Gol  Location:   {this.GolLocation}.");
-      Console.WriteLine($"Distanc Between Ball & Gol  Location:   {this.DistancBetweenBallAndGol}.");
-      Console.WriteLine($"Available Swing: {this.MaxSwingCount - this.SwingCount}. \n");
+      Console.WriteLine($"Galf Ball Point: {this.BallLocation}");
+      Console.WriteLine($"Distanc Between Ball & Cup: {this.DistancBetweenBallAndCup}.");
+      Console.WriteLine($"Available Swing: {this.MaxSwingCount - this.SwingCount} of {this.MaxSwingCount}\n");
     }
   }
 }

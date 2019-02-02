@@ -6,11 +6,14 @@ namespace Assignment_2_Golf
   {
     static void Main(string[] args)
     {
+      // Max amount of swing that the user can take
+      int maxSwingCount = 4;
+
       Console.WriteLine("Golf Game!");
       Console.WriteLine("Choose The Studiom Size: ");
-      double studiomSiz = double.Parse(Console.ReadLine());
+      double studiomSiz = UserInput.GetDoubleValueFromUser();
       // Intialize The Game
-      var golfGame = new GolfGame(studiomSiz, maxSwingCount: 10);
+      var golfGame = new GolfGame(studiomSiz, maxSwingCount);
       golfGame.PrintGameStatus();
       while (golfGame.GameResult == GameResult.Playing)
       {
@@ -24,24 +27,28 @@ namespace Assignment_2_Golf
         Console.Write("Enter The Velocity: ");
         var velocity = UserInput.GetDoubleValueFromUser();
 
+        // Create new swing
+        var swing = new Swing(angle, velocity);
+
         // Move The Ball To New Location
-        golfGame.Swing(angle, velocity);
+        golfGame.MoveBall(swing);
 
         golfGame.PrintGameStatus();
 
         // Keep Playing Untill Losing Or Winning
         if (golfGame.GameResult != GameResult.Playing)
         {
-          Console.WriteLine(golfGame.GameStatusText);
-          Console.WriteLine("To Play Again Press P To Exit Any Thing Else.");
+          Console.WriteLine(golfGame.GameStatusText + "\n");
+          Console.WriteLine("To Play Again Press P To Exit Press Any Thing Else.");
           var userInput = Console.ReadLine();
           // To Restart The Game If True
           if (String.Compare("p", userInput, true) == 0)
           {
             Console.Clear();
             Console.WriteLine("Choose The Studiom Size: ");
-            studiomSiz = double.Parse(Console.ReadLine());
-            golfGame = new GolfGame(studiomSiz, maxSwingCount: 10);
+            studiomSiz = UserInput.GetDoubleValueFromUser();
+            golfGame = new GolfGame(studiomSiz, maxSwingCount);
+            golfGame.PrintGameStatus();
           }
           // To Exit
           else
