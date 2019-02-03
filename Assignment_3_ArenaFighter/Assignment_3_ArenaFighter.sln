@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment_3_ArenaFighter", "Assignment_3_ArenaFighter\Assignment_3_ArenaFighter.csproj", "{CFC98151-8AC2-4547-AA3E-869ED5B6C1F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment_3_ArenaFighter_Test", "Assignment_3_ArenaFighter_Test\Assignment_3_ArenaFighter_Test.csproj", "{69B97F71-FDD2-408B-A4E5-02A38855FF86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFC98151-8AC2-4547-AA3E-869ED5B6C1F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC98151-8AC2-4547-AA3E-869ED5B6C1F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFC98151-8AC2-4547-AA3E-869ED5B6C1F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFC98151-8AC2-4547-AA3E-869ED5B6C1F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69B97F71-FDD2-408B-A4E5-02A38855FF86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69B97F71-FDD2-408B-A4E5-02A38855FF86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69B97F71-FDD2-408B-A4E5-02A38855FF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69B97F71-FDD2-408B-A4E5-02A38855FF86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2415E2F0-D628-4171-B3CE-19F634F72804}
+	EndGlobalSection
+EndGlobal
