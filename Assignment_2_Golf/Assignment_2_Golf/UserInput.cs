@@ -19,6 +19,16 @@ namespace Assignment_2_Golf
     }
     
     /// <summary>
+    /// Indicate wether the givin value is positive
+    /// </summary>
+    /// <param name="velocity">the double to test</param>
+    /// <returns></returns>
+    public static bool IsVelocityPositive(double velocity)
+    {
+      return velocity >= 0;
+    }
+
+    /// <summary>
     /// Read Input From User
     /// Warning This Method Will Lock The Program Untills Get a Valid Input
     /// </summary>

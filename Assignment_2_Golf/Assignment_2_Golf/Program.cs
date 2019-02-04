@@ -26,7 +26,11 @@ namespace Assignment_2_Golf
         }
         Console.Write("Enter The Velocity: ");
         var velocity = UserInput.GetDoubleValueFromUser();
-
+        while (!UserInput.IsVelocityPositive(velocity))
+        {
+          Console.WriteLine("The Verlocity Should Be Positive!");
+          velocity = UserInput.GetDoubleValueFromUser();
+        }
         // Create new swing
         var swing = new Swing(angle, velocity);
 

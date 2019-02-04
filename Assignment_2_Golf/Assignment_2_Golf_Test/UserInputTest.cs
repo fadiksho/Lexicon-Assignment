@@ -49,5 +49,15 @@ namespace Assignment_2_Golf_Test
       // Assert
       Assert.IsFalse(isAngleCorrect);
     }
+    [TestMethod]
+    public void Velocity_Is_InValid_When_Value_Is_Negative()
+    {
+      // Arrange
+      var velocity = -10;
+      // Act
+      bool isValid = UserInput.IsVelocityPositive(velocity);
+      // Assert
+      Assert.IsFalse(isValid);
+    }
   }
 }
