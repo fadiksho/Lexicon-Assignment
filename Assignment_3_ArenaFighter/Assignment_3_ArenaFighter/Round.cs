@@ -8,6 +8,7 @@ namespace Assignment_3_ArenaFighter
   {
     public Battle Battle { get; private set; }
 
+    private Random ran = new Random();
     public Round(Battle battle)
     {
       this.Battle = battle;
@@ -15,7 +16,6 @@ namespace Assignment_3_ArenaFighter
 
     public void StartRound()
     {
-      var ran = new Random();
       int playerDice = ran.Next(1, 7);
       int opponentDice = ran.Next(1, 7);
       int playerStrengthPlusDice = playerDice + Battle.Player.Strength;
@@ -28,13 +28,13 @@ namespace Assignment_3_ArenaFighter
       if (playerStrengthPlusDice > opponentStrenghtPlusDice)
       {
         Battle.Opponent.Health -= Battle.Player.Damage;
-        PrintTheAttack(playerDice, opponentDice);
+        PrintTheAttack(playerStrengthPlusDice, opponentStrenghtPlusDice);
       }
       // Opponent attack
       else if (playerStrengthPlusDice < opponentStrenghtPlusDice)
       {
         Battle.Player.Health -= Battle.Opponent.Damage;
-        PrintTheAttack(playerDice, opponentDice);
+        PrintTheAttack(playerStrengthPlusDice, opponentStrenghtPlusDice);
       }
       // Evently matched
       else
@@ -49,9 +49,9 @@ namespace Assignment_3_ArenaFighter
     private void PrintRolls(int playerDice, int opponentDice)
     {
       Console.WriteLine($"Rolls: " +
-        $"{Battle.Player.Name} {Battle.Player.Strength + 2} ({Battle.Player.Strength}+{playerDice})" +
+        $"{Battle.Player.Name} {Battle.Player.Strength + playerDice} ({Battle.Player.Strength}+{playerDice})" +
         $" vs " +
-        $"{Battle.Player.Name} {Battle.Player.Strength + 2} ({Battle.Opponent.Strength}+{opponentDice})");
+        $"{Battle.Opponent.Name} {Battle.Opponent.Strength + opponentDice} ({Battle.Opponent.Strength}+{opponentDice})");
     }
 
     private void PrintRemainingHealth()
@@ -61,11 +61,11 @@ namespace Assignment_3_ArenaFighter
         $"{Battle.Opponent.Name} ({(Battle.Opponent.Health > 0 ? Battle.Opponent.Health.ToString() : "Dead")})");
     }
 
-    private void PrintTheAttack(int playerDice, int opponentDice)
+    private void PrintTheAttack(int playerStrengthPlusDice, int opponentStrenghtPlusDice)
     {
-      Player attacker;
-      Player defender;
-      if (playerDice > opponentDice)
+      Character attacker;
+      Character defender;
+      if (playerStrengthPlusDice > opponentStrenghtPlusDice)
       {
         attacker = Battle.Player;
         defender = Battle.Opponent;
@@ -79,7 +79,7 @@ namespace Assignment_3_ArenaFighter
       }
       Console.Write($"{attacker.Name} attacks {defender.Name}! " +
         $"{defender.Name} takes {attacker.Damage} damage" + 
-        $"{(Battle.IsBattleEnd ? ", and falls to the ground dead." : ".")}");
+        $"{(Battle.IsBattleEnd ? ", and falls to the ground dead." : ".")} \n");
       Console.ResetColor();
     }
   }
