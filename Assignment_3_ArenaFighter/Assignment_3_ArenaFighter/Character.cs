@@ -10,7 +10,6 @@ namespace Assignment_3_ArenaFighter
     public int Strength { get; private set; }
     public int Damage { get; private set; }
     public int Health { get; set; }
-    public int Score { get; set; }
     public bool IsDead
     {
       get
@@ -31,6 +30,30 @@ namespace Assignment_3_ArenaFighter
       this.Health = rand.Next(5, 10);
     }
 
+    public Character(string name, int strength, int damage, int health)
+    {
+      this.Name = name;
+      this.Strength = strength;
+      this.Damage = damage;
+      this.Health = health;
+    }
+
+    public int GetPlayerScore()
+    {
+      int score = 0;
+      foreach (var battle in Battles)
+      {
+        // Reword with 2 for each battle the player join
+        score += 2;
+        if (battle.IsBattleEnd && battle.Opponent.Health <= 0)
+        {
+          // Reword with 3 for each battle the player win
+          score += 3;
+        }
+      }
+      return score;
+    }
+
     public void PrintCharacterInfo()
     {
       Console.WriteLine($"Name: {this.Name}");
@@ -41,7 +64,7 @@ namespace Assignment_3_ArenaFighter
 
     public void PrintCharacterScore()
     {
-      Console.WriteLine($"{this.Name} total score is {this.Score}.");
+      Console.WriteLine($"{this.Name} total score is {this.GetPlayerScore()}.");
     }
 
     public void PrintCharacterFinalStatistics()

@@ -19,6 +19,7 @@ namespace Assignment_3_ArenaFighter
         do
         {
           Console.Clear();
+          // Print the player info name, strength, damage, health
           player.PrintCharacterInfo();
           Console.WriteLine("What do you want to do?");
           Console.WriteLine("H - Hunt for an opponent");
@@ -40,12 +41,13 @@ namespace Assignment_3_ArenaFighter
           var opponent = Character.GetRandomCharacter();
 
           Console.Clear();
+          // Print the players info name, strength, damage, health
           player.PrintCharacterInfo();
           opponent.PrintCharacterInfo();
 
           // Creat a battle
           var battle = new Battle(player, opponent);
-          // Keep playing rounds untill the battle end
+          // Keep playing rounds untill the battleEnd(one of the player is dead)
           while (!battle.IsBattleEnd)
           {
             // Creat new round
@@ -57,23 +59,17 @@ namespace Assignment_3_ArenaFighter
             // Save this round in battle history
             battle.BattleRounds.Add(round);
 
-            // If the battle end reward the winner!
-            // Print the winner name
+            // When battle end Print the winner
             if (battle.IsBattleEnd)
             {
               Console.ReadKey(true);
               var winer = battle.Player.Health > battle.Opponent.Health
                   ? battle.Player : battle.Opponent;
-              winer.Score += 3;
               Console.WriteLine($"\n{winer.Name} is victory");
               Console.ReadKey(true);
             }
           }
         }
-
-        // ToDo remove this line
-        // Hunting or Retire
-        //break;
       }
       Console.Clear();
       // Print Final Statistics

@@ -23,7 +23,7 @@ namespace Assignment_3_ArenaFighter
 
       // Print Rolls
       PrintRolls(playerDice, opponentDice);
-     
+      
       // Player attack
       if (playerStrengthPlusDice > opponentStrenghtPlusDice)
       {
@@ -65,12 +65,14 @@ namespace Assignment_3_ArenaFighter
     {
       Character attacker;
       Character defender;
+      // Player is the attacker
       if (playerStrengthPlusDice > opponentStrenghtPlusDice)
       {
         attacker = Battle.Player;
         defender = Battle.Opponent;
         Console.ForegroundColor = ConsoleColor.Green;
       }
+      // Opponent is the attacker
       else
       {
         attacker = Battle.Opponent;
