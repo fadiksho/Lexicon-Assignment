@@ -15,6 +15,7 @@ namespace Assignment_4_VendingMachine
 
     public override void UseProduct()
     {
+      Console.ForegroundColor = ConsoleColor.White;
       Console.WriteLine($"Drink The {this.Name}!");
     }
 

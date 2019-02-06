@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Assignment_4_VendingMachine
@@ -8,31 +9,35 @@ namespace Assignment_4_VendingMachine
   {
     public int MonyPool { get; set; }
 
+    public IProduct SelectedProductToBuy { get; set; }
+
+    public bool CanBuySelectedProduct
+    {
+      get
+      {
+        return SelectedProductToBuy != null && SelectedProductToBuy.Price <= MonyPool;
+      }
+    }
+
     public IEnumerable<IProduct> Products { get; private set; }
-    
+
     public VendingMachine(IEnumerable<Product> products)
     {
       this.Products = products;
     }
-    
+
+    public MachineState State { get; set; } = MachineState.InputMoney;
+
     /// <summary>
     /// Buying product from the machine
     /// </summary>
     /// <param name="product">the product to buy</param>
-    /// <returns>wether the buying succeded or not</returns>
-    public bool BuyProduct(IProduct product)
+    public void BuyProduct()
     {
-      if(MonyPool >= product.Price)
-      {
-        MonyPool -= product.Price;
-        product.UseProduct();
-        return true;
-      }
-      else
-      {
-        Console.WriteLine($"You don't have enough mony to buy {product.Name}!");
-        return false;
-      }
+      MonyPool -= SelectedProductToBuy.Price;
+      SelectedProductToBuy.UseProduct();
+      Console.ResetColor();
+      Console.ReadKey();
     }
 
     /// <summary>
@@ -44,6 +49,27 @@ namespace Assignment_4_VendingMachine
       {
         product.DisplayProductInfo();
       }
+      Console.WriteLine();
     }
+
+    /// <summary>
+    /// Set the property SelectedProductToBuy to Product or Null
+    /// </summary>
+    /// <param name="id">The product Id</param>
+    public void SelectProduct(int id)
+    {
+      this.SelectedProductToBuy = Products.Where(p => p.Id == id).FirstOrDefault();
+    }
+  }
+
+  public enum MachineState
+  {
+    NotWorking,
+    InputMoney,
+    ChooseProduct,
+    BuyProduct,
+    MoneyIsNotEnough,
+    SaveCutomerOrder,
+    NextCustomer
   }
 }

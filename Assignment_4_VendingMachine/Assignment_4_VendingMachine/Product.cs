@@ -22,7 +22,7 @@ namespace Assignment_4_VendingMachine
 
     public virtual void DisplayProductInfo()
     {
-      Console.WriteLine($"Name: {Name, -15} | Price: {Price, -3} kr | Id: {Id}");
+      Console.WriteLine($" Name: {Name, -15} | Price: {Price, -3} kr | Id: {Id}");
     }
 
     public abstract void UseProduct();

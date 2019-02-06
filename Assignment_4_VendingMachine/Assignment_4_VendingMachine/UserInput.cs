@@ -12,11 +12,14 @@ namespace Assignment_4_VendingMachine
     /// </summary>
     /// <param name="mony">The amount of mony to check</param>
     /// <returns></returns>
-    public bool IsMonyValid(int mony)
+    public static bool IsMonyValid(string moneyString)
     {
-      bool isMonyValid = mony == 1 || mony == 5 || mony == 10
-        || mony == 20 || mony == 50 || mony == 100 
-        || mony == 500 | mony == 1000;
+      bool isNumber = int.TryParse(moneyString, out int money);
+
+      bool isMonyValid = isNumber &&
+          (money == 1 || money == 5 || money == 10 ||
+           money == 20 || money == 50 || money == 100 ||
+           money == 500 | money == 1000);
 
       return isMonyValid;
     }

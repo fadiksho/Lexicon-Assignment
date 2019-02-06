@@ -15,6 +15,7 @@ namespace Assignment_4_VendingMachine
     
     public override void UseProduct()
     {
+      Console.ForegroundColor = ConsoleColor.Green;
       Console.WriteLine($"Do you know that the Staple Food is better than snacks," +
         $"Enjoy eating {this.Name}!");
     }

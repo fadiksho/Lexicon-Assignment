@@ -15,6 +15,7 @@ namespace Assignment_4_VendingMachine
 
     public override void UseProduct()
     {
+      Console.ForegroundColor = ConsoleColor.Blue;
       Console.WriteLine($"Enjoy eating {this.Name} but, one per day is more than enought!");
     }
   }

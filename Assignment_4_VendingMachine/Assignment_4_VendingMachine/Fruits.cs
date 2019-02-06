@@ -14,6 +14,7 @@ namespace Assignment_4_VendingMachine
 
     public override void UseProduct()
     {
+      Console.ForegroundColor = ConsoleColor.Green;
       Console.WriteLine($"Peel the {this.Name} and start eating!");
     }
   }
