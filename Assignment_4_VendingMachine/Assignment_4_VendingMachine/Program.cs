@@ -111,7 +111,7 @@ namespace Assignment_4_VendingMachine
             // ToDo: Save Customer order
             // ToDo: Prepare kvito for the customer
             Console.WriteLine("\n------------------------------------------");
-            Console.WriteLine($"Your Change is: {vendingMachine.MonyPool}");
+            Console.WriteLine($"Your Change is: { VendingMachine.RetriveCoine(vendingMachine.MonyPool) }");
             Console.WriteLine("------------------------------------------\n");
             Console.ReadKey(true);
             // reset the machine to resive new customer!

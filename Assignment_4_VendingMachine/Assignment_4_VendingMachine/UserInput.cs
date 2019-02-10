@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Assignment_4_VendingMachine
@@ -16,10 +17,7 @@ namespace Assignment_4_VendingMachine
     {
       bool isNumber = int.TryParse(moneyString, out int money);
 
-      bool isMonyValid = isNumber &&
-          (money == 1 || money == 5 || money == 10 ||
-           money == 20 || money == 50 || money == 100 ||
-           money == 500 | money == 1000);
+      bool isMonyValid = isNumber && VendingMachine.AcceptedCoins.Contains(money);
 
       return isMonyValid;
     }
