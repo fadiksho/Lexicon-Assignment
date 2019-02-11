@@ -61,7 +61,7 @@ namespace Assignment_4_VendingMachine
           if (vendingMachine.CanBuySelectedProduct)
           {
             vendingMachine.BuyProduct();
-
+            Console.ReadKey();
             vendingMachine.State = MachineState.SaveCutomerOrder;
           }
           else

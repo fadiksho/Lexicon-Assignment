@@ -39,8 +39,8 @@ namespace Assignment_4_VendingMachine
     {
       MonyPool -= SelectedProductToBuy.Price;
       SelectedProductToBuy.UseProduct();
+      SelectedProductToBuy = null;
       Console.ResetColor();
-      Console.ReadKey();
     }
 
     /// <summary>
