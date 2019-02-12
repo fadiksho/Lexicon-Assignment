@@ -6,6 +6,8 @@ namespace Assignment_3_ArenaFighter
 {
   public class Character
   {
+    static var rand = new Random();
+
     public string Name { get; private set; }
     public int Strength { get; private set; }
     public int Damage { get; private set; }
@@ -24,7 +26,7 @@ namespace Assignment_3_ArenaFighter
     public Character(string name)
     {
       this.Name = name;
-      var rand = new Random();
+      
       this.Strength = rand.Next(4, 8);
       this.Damage = Strength / 2;
       this.Health = rand.Next(5, 10);
