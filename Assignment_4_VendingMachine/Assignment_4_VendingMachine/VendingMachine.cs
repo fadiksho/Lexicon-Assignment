@@ -108,12 +108,10 @@ namespace Assignment_4_VendingMachine
 
   public enum MachineState
   {
-    NotWorking,
     InputMoney,
     ChooseProduct,
     BuyProduct,
     MoneyIsNotEnough,
-    SaveCutomerOrder,
-    NextCustomer
+    Checkout
   }
 }
