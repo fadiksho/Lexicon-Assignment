@@ -7,6 +7,8 @@ namespace Assignment_4_VendingMachine
 {
   public class VendingMachine
   {
+    readonly Random random = new Random();
+
     public static readonly int[] AcceptedCoins =
       new int[8] { 1, 5, 10, 20, 50, 100, 500, 1000 };
 
@@ -48,8 +50,20 @@ namespace Assignment_4_VendingMachine
     /// </summary>
     public void DisplayProducts()
     {
+      Type PreviousType = null;
       foreach (var product in Products)
       {
+        var type = product.GetType();
+
+        if (PreviousType != type)
+        {
+          Console.WriteLine();
+          PreviousType = type;
+          Console.ForegroundColor = (ConsoleColor)random.Next(3, 16);
+          Console.Write(type.Name);
+          Console.ResetColor();
+          Console.WriteLine("------------------------------");
+        }
         product.DisplayProductInfo();
       }
       Console.WriteLine();

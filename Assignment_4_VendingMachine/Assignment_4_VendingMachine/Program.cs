@@ -13,7 +13,7 @@ namespace Assignment_4_VendingMachine
       {
         Console.Clear();
         Console.WriteLine("Lexicon Vending Machine!");
-        Console.WriteLine("\n ---------\n|ALL ITEMS|\n ---------\n");
+        Console.WriteLine("\n ---------\n|ALL ITEMS|\n ---------");
 
         vendingMachine.DisplayProducts();
 

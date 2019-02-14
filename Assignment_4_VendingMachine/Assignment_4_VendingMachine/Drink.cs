@@ -24,7 +24,13 @@ namespace Assignment_4_VendingMachine
     public override void DisplayProductInfo()
     {
       base.DisplayProductInfo();
-      Console.WriteLine($"|-----({this.DrinkType.ToString()}) Drink!");
+      Console.Write($"|-----(");
+      Console.ForegroundColor = this.DrinkType == DrinkType.Hot ? ConsoleColor.Red : ConsoleColor.Blue;
+
+      Console.Write(this.DrinkType.ToString());
+
+      Console.ResetColor();
+      Console.Write(") Drink!\n");
     }
   }
 
