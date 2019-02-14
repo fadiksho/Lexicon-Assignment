@@ -12,12 +12,12 @@ namespace Assignment_4_VendingMachine
 
     public static int ProductsCount { get; private set; }
 
-    public Product(int id, string name)
+    public Product(string name)
     {
-      this.Id = id;
-      this.Name = name;
-
       ProductsCount += 1;
+
+      this.Id = ProductsCount;
+      this.Name = name;
     }
 
     public virtual void DisplayProductInfo()

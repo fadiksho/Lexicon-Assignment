@@ -12,9 +12,9 @@ namespace Assignment_4_VendingMachine_Test
       // Arrange
       var vendingMaching = new VendingMachine(new List<Product>
       {
-        new Fruits(1, "Apple") { Price = 24 },
-        new Staple(5, "Baguette") { Price = 20 },
-        new Dessert(6, "Ice Cream") { Price = 40 },
+        new Fruits("Apple") { Price = 24 },
+        new Staple("Baguette") { Price = 20 },
+        new Dessert("Ice Cream") { Price = 40 },
       });
       // Act
       vendingMaching.SelectProduct(1);
@@ -28,11 +28,13 @@ namespace Assignment_4_VendingMachine_Test
       // Arrange
       var vendingMaching = new VendingMachine(new List<Product>
      {
-        new Fruits(1, "Apple") { Price = 24 },
-        new Staple(5, "Baguette") { Price = 20 },
-        new Dessert(6, "Ice Cream") { Price = 40 },
-     });
-      vendingMaching.MonyPool = 50;
+        new Fruits("Apple") { Price = 24 },
+        new Staple("Baguette") { Price = 20 },
+        new Dessert("Ice Cream") { Price = 40 },
+     })
+      {
+        MonyPool = 50
+      };
       // Act
       vendingMaching.SelectProduct(1);
       vendingMaching.BuyProduct();
@@ -46,9 +48,9 @@ namespace Assignment_4_VendingMachine_Test
       // Arrange
       var vendingMaching = new VendingMachine(new List<Product>
      {
-        new Fruits(1, "Apple") { Price = 24 },
-        new Staple(5, "Baguette") { Price = 20 },
-        new Dessert(6, "Ice Cream") { Price = 40 },
+        new Fruits("Apple") { Price = 24 },
+        new Staple("Baguette") { Price = 20 },
+        new Dessert("Ice Cream") { Price = 40 },
      });
       vendingMaching.MonyPool = 50;
       // Act
@@ -64,11 +66,13 @@ namespace Assignment_4_VendingMachine_Test
       // Arrange
       var vendingMaching = new VendingMachine(new List<Product>
      {
-        new Fruits(1, "Apple") { Price = 24 },
-        new Staple(5, "Baguette") { Price = 20 },
-        new Dessert(6, "Ice Cream") { Price = 40 },
-     });
-      vendingMaching.MonyPool = 0;
+        new Fruits("Apple") { Price = 24 },
+        new Staple("Baguette") { Price = 20 },
+        new Dessert("Ice Cream") { Price = 40 },
+     })
+      {
+        MonyPool = 0
+      };
       // Act
       vendingMaching.SelectProduct(1);
       // Assert

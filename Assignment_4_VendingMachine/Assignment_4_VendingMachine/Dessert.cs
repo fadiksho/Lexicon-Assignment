@@ -8,7 +8,7 @@ namespace Assignment_4_VendingMachine
   {
     public static int DessertsProductCount { get; private set; }
 
-    public Dessert(int id, string name) : base(id, name)
+    public Dessert(string name) : base(name)
     {
       DessertsProductCount += 1;
     }

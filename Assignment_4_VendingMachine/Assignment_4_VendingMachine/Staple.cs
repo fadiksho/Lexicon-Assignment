@@ -6,11 +6,11 @@ namespace Assignment_4_VendingMachine
 {
   public class Staple : Product
   {
-    public static int StapleCount { get; private set; }
+    public static int StapleProductCount { get; private set; }
 
-    public Staple(int id, string name) : base(id, name)
+    public Staple(string name) : base( name)
     {
-      StapleCount += 1;
+      StapleProductCount += 1;
     }
     
     public override void UseProduct()

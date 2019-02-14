@@ -6,8 +6,9 @@ namespace Assignment_4_VendingMachine
 {
   public class Fruits : Product
   {
+    public static int FruitsProductCount { get; set; }
 
-    public Fruits(int id, string name) : base(id, name)
+    public Fruits(string name) : base(name)
     {
       
     }

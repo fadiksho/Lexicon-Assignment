@@ -6,9 +6,11 @@ namespace Assignment_4_VendingMachine
 {
   public class Drink : Product
   {
+    public static int DrinkProductCount { get; set; }
+
     public DrinkType DrinkType { get; private set; }
 
-    public Drink(int id, string name, DrinkType type) : base(id, name)
+    public Drink(string name, DrinkType type) : base(name)
     {
       DrinkType = type;
     }
